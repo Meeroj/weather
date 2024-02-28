@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Oxygen+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+    <style>
+          .bg-image {
+        background-image: url('./bg.jpg');
+        background-size: cover;
+        /* background-repeat: no-repeat; */
+        background-position: center;
+      }
+    </style>
+    </style>
+  </head>
+  <body
+    class="w-full h-[100vh] bg-image"
+  >
+    <main class="flex flex-wrap text-center">
+      <section class="container">
+        <div class="row">
+          <form class="col mt-10" id="search-form">
+            <input
+              type="text"
+              id="search-input"
+              aria-describedby="searchCity"
+              placeholder="Search city..."
+              class="search-form py-1 px-2 outline-none rounded-md w-3/5"
+              autocomplete="off"
+            />
+            <button
+              type="submit"
+              class="ms-2 p-2 rounded-md bg-blue-400 font-bold text-white hover:bg-blue-500"
+            >
+              Search
+            </button>
+          </form>
+          <div class="p-5 rounded-md xl:flex sm:block justify-center gap-5">
+           <div class="xl:w-2/5 mt-2 rounded-md bg-blue-500 bg-opacity-45 py-10">
+            <h1
+            class="col text-4xl font-bold text-white"
+            id="searched-city"
+          >
+            Tashkent
+          </h1>
+          <span class="measurements">
+            <a href="#" id="celcius-link" class="text-blue-300 text-2xl">C°</a> |
+            <a href="#" id="fahrenheit-link" class="text-blue-300 text-2xl">F°</a>
+          </span>
+          <h1 class="col temp-title text-9xl text-amber-500" id="current-temperature">4°</h1>
+           </div>
+          <div class="xl:w-2/5 mt-2 rounded-md bg-blue-500 bg-opacity-45 py-10">
+            <div class="col todays-info">
+                <h2 id="current-day" class="text-white inline-block">Today</h2>
+                <h2 id="current-day" class="text-amber-500 inline-block">|</h2>
+                <p id="weather-type" class="text-start  text-white inline-block">Cloudy</p>
+              <p id="current-time" class="text-9xl text-blue-300">11:00</p>
+            </div>
+            <div class="col d-flex align-items-center side-info">
+              <ul>
+                <li class="text-white font-medium">Humidity: <span id="humidity">0 km/s</span></li>
+                <li class="text-white font-medium">Wind: <span id="wind"></span>0 km/s</li>
+              </ul>
+            </div>
+        </div>
+        <hr />
+      </section>
+
+      <section class="container">
+        <div class="row w-full flex flex-col sm:flex-col xl:flex-row justify-center gap-5 mt-5 items-center">
+          <div class="xl:w-[15%] w-4/5 p-4 bg-green-600 bg-opacity-45 rounded-md ">
+            <h3 class="text-2xl text-white font-bold">Fri</h3>
+            <div class="flex justify-around ">
+                <br /><img
+              src="https://img.icons8.com/color-glass/42/000000/rain.png"
+            />
+            <p class="weather text-white">Rain</p>
+            <span class="text-amber-500 font-bold text-xl">2°</span>
+            </div>
+          </div>
+          <div class="xl:w-[15%] w-4/5 p-4 bg-green-600 bg-opacity-45 rounded-md ">
+            <h3 class="text-2xl text-white font-bold">Sat</h3>
+            <div class="flex justify-around ">
+                <br /><img
+              src="https://img.icons8.com/color-glass/42/000000/cloud.png"
+            />
+            <p class="weather text-white">Cloudy</p>
+            <span class="text-amber-500 font-bold text-xl">4°</span>
+            </div>
+          </div>
+          <div class="xl:w-[15%] w-4/5 p-4 bg-green-600 bg-opacity-45 rounded-md ">
+            <h3 class="text-2xl text-white font-bold">Sun</h3>
+            <div class="flex justify-around ">
+                <br /><img
+              src="https://img.icons8.com/color-glass/42/000000/partly-cloudy-day.png"
+            />
+            <p class="weather text-white">Partly cloudy</p>
+            <span class="text-amber-500 font-bold text-xl">6°</span>
+            </div>
+          </div>
+          <div class="xl:w-[15%] w-4/5 p-4 bg-green-600 bg-opacity-45 rounded-md ">
+            <h3 class="text-2xl text-white font-bold">Mon</h3>
+            <div class="flex justify-around ">
+                <br /><img
+              src="https://img.icons8.com/color-glass/42/000000/sun.png"
+            />
+            <p class="weather text-white">Sunny</p>
+            <span class="text-amber-500 font-bold text-xl">8°</span>
+            </div>
+          </div>
+          <div class="xl:w-[15%] w-4/5 p-4 bg-green-600 bg-opacity-45 rounded-md ">
+            <h3 class="text-2xl text-white font-bold">Tues</h3>
+            <div class="flex justify-around ">
+                <br /><img
+              src="https://img.icons8.com/color-glass/42/000000/wind.png"
+            />
+            <p class="weather text-white">Windy</p>
+            <span class="text-amber-500 font-bold text-xl">5°</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
